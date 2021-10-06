@@ -1,9 +1,10 @@
-print("hi")
+import pyaudio
+# Authorize venv: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+# Activate venv: .\.venv\Scripts\activate
 
-# pseudo code
 
 '''
-
+Overall steps:
 1. prompt user for input or select audio input mode (assume input is .wav file)
 2. read in audio file
 3. plot audio file in matplotlib
