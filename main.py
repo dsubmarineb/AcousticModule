@@ -1,6 +1,13 @@
-import pyaudio
+# Note for activating virtual environment:
 # Authorize venv: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 # Activate venv: .\.venv\Scripts\activate
+
+import pyaudio
+import wave
+import callback as cb
+import time
+import blocking as bl
+
 
 
 '''
@@ -12,10 +19,15 @@ Overall steps:
     3-2. plot amplitude vs frequency (Fourier transform)
     * Q. How can I represent change in Fourier Transform over time?
 4. ???
-
-
-
-
-
-
 '''
+
+fileName = input("Enter file name: ")
+if fileName == '':
+    fileName = "whistle.wav"
+
+cb.callbackHelper(fileName)
+bl.blockingHelper(fileName)
+
+
+
+
