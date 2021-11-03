@@ -2,11 +2,9 @@
 # Authorize venv: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 # Activate venv: .\.venv\Scripts\activate
 
-import pyaudio
-import wave
 import callback as cb
-import time
 import blocking as bl
+import drawAudio as da
 
 
 
@@ -21,13 +19,20 @@ Overall steps:
 4. ???
 '''
 
+# Prompt user for input file name
 fileName = input("Enter file name: ")
 if fileName == '':
     fileName = "whistle.wav"
-
-cb.callbackHelper(fileName)
+'''
+# Playing using blocking mode
+print("Playing using blocking mode")
 bl.blockingHelper(fileName)
 
-
+# Play file using callback mode
+print("Playing using callback mode")s
+cb.callbackHelper(fileName)
+'''
+# Drawing plots of the file
+da.draw(fileName)
 
 
