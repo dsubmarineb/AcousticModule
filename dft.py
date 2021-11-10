@@ -1,7 +1,7 @@
 # Implement DFT Transformation
 import numpy as np
-import math
 import wave
+import matplotlib.pyplot as plt
 
 
 # Separate data into left and right channels
@@ -48,13 +48,14 @@ def dft(fileName):
         right.extend(lr[1])
         data = wf.readframes(frame_count)
     
-    x_n = left
-    PI = math.pi
-    e = math.e
-    i = 1j
-    N = len(x_n)
-    print(N)
 
+    x_f_left = np.fft.fft(left)
+    left_npar = np.asarray(left)
+    freq = np.fft.fftfreq(left_npar.shape[-1])
+    plt.plot(freq, x_f_left.real, freq, x_f_left.imag)
+    plt.show()
+
+    ''' TOO SLOW - O(N^2) -> that's what fft is for...
     x_k = [0] * len(x_n)
     for k in range(len(x_k)):
         x_k[k] = sum([(x_n[n] * math.cos(2*PI*k*n/N)) for n in range(N)])
@@ -63,5 +64,6 @@ def dft(fileName):
 
     x_k = x_t * []
     print('hi')
+    '''
     
 dft("whistle.wav")
