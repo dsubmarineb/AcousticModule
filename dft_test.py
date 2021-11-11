@@ -1,18 +1,25 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-n = 256
-t= np.arange(n)
-sp = np.fft.fft(np.sin(t), n)
-sp2 = np.fft.fft(np.sin(2*t), n)
-sp3 = np.fft.fft(np.sin(3*t), n)
-np.fft.fftshift(sp)
-print(sp[128])
-freq = np.fft.fftfreq(n)
-# plt.plot(freq, sp.real, label = "Real")
-# plt.plot(freq, sp.imag, label = "Imaginary")
-plt.plot(freq, np.abs(sp), label = "sin(t)")
-plt.plot(freq, np.abs(sp2), label = "sin(2t)")
-plt.plot(freq, np.abs(sp3), label = "sin(3t)")
-plt.legend()
+n = 5
+t= np.arange(0, n, 0.01)
+f_t = np.sin(2*np.pi*t)
+
+sp = np.fft.fft(f_t)
+freq = np.fft.fftfreq(t.shape[-1])*100
+
+fig, axs = plt.subplots(2)
+axs[0].plot(t, f_t)
+axs[1].plot(freq, abs(sp))
+
 plt.show()
+
+'''
+Note:
+
+Showing FFT of f_t in 1/100 scale -> step size in t is 0.01
+For function f_t = sin(2PI*t), I expect a peak at 1 (not 0.01)
+I want to perform DFT on 0 through 1 at 0.01 interval (looking at 0.01 Hz, 0.02 Hz, ... , 1.0 Hz)
+
+
+'''
