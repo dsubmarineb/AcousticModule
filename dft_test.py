@@ -18,7 +18,7 @@ plt.show()
 Note:
 
 Showing FFT of f_t in 1/100 scale -> step size in t is 0.01
-For function f_t = sin(2PI*t), I expect a peak at 1 (not 0.01)
+For function f_t = sin(2PI*t), I expect FFT with a peak at 1 (not 0.01)
 I want to perform DFT on 0 through 1 at 0.01 interval (looking at 0.01 Hz, 0.02 Hz, ... , 1.0 Hz)
 
 

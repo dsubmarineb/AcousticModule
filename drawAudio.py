@@ -49,8 +49,9 @@ def draw(fileName):
     frames = len(left)
     duration = frames / samplerate
     sampleperiod = 1 / samplerate
-    
-    # Plot result
+
+    '''
+    # Plot result - in 1 plot
     fig, ax = plt.subplots()
     plotrange = np.arange(0, duration, sampleperiod)
     ax.plot(plotrange, left, label='Left Channel')
@@ -58,12 +59,55 @@ def draw(fileName):
     ax.set(xlabel='Time (s)', ylabel='Amplitude', 
             title='Amplitude vs Time')
     ax.legend()
+    '''
 
-    plt.show()
+    plotrange = np.arange(0, duration, sampleperiod)
+    
+
+    # fig = plt.figure(1)
+    # fig, ax = plt.subplots()
+
+    # ax.plot(plotrange, left, label='Left Channel')
+    # ax.plot(plotrange, right, label='Right Channel')
+    # ax.set_xlabel('Time (s)')
+    # ax.set_ylabel('Amplitude')
+    # ax.set_title('Amplitude vs Time')
+    # ax.legend()
+    # ax.set_xlim(0, 8)
+    # ax.set_ylim(-9000, 9000)
+    # fig.savefig('1.png')
+
+    plt.figure(1)
+    plt.plot(plotrange, left, label='Left Channel')
+    plt.plot(plotrange, right, label='Right Channel')
+    plt.xlabel('Time(s)')
+    plt.ylabel('Amplitude')
+    plt.legend()
+    plt.ylim(-9000, 9000)
+    plt.title('Amplitude vs Time')
+    plt.savefig('both.png')
+
+    plt.figure(2)
+    plt.plot(plotrange, left, label='Left Channel')
+    plt.xlabel('Time(s)')
+    plt.ylabel('Amplitude')
+    plt.ylim(-9000, 9000)   
+    plt.title('Left Channel')
+    plt.savefig('left.png')
+
+
+    plt.figure(3)
+    plt.plot(plotrange, right, label='Right Channel', color='#ff7f0e')
+    plt.xlabel('Time(s)')
+    plt.ylabel('Amplitude')
+    plt.ylim(-9000, 9000)
+    plt.title('Right Channel')
+    plt.savefig('right.png')
+    
 
     # Close wave file
     wf.close()
     return
 
 # For debugging:
-# draw("whistle.wav")
+draw("whistle.wav")
